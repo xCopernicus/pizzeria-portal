@@ -1,0 +1,13 @@
+@import '../../../styles/settings.module.scss';
+
+.component {
+  display: flex;
+
+  a {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    background-color: pink;
+    font-size: 50px;
+  }
+}

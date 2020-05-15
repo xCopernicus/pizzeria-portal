@@ -1,12 +1,14 @@
 import React from 'react';
 
-import styles from './Booking.scss';
+import styles from './Booking.module.scss';
 
-const Booking = (props) => (
+const Booking = ({match}) => {
+  const {id} = match.params;
+  return (
   <div className={styles.component}>
     <h2>Booking view</h2>
-    {props.match.params.id}
+    {id}
   </div>
-);
+)};
 
 export default Booking;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Kitchen.scss';
+import styles from './Kitchen.module.scss';
 
 const Kitchen = () => (
   <div className={styles.component}>

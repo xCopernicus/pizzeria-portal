@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Event.scss';
+import styles from './Event.module.scss';
 
 const Event = (props) => (
   <div className={styles.component}>

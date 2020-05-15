@@ -1,4 +1,4 @@
-@import './settings.scss';
+@import './settings.module.scss';
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -19,5 +19,3 @@ body {
 a, a:hover, a:visited {
   text-decoration: none;
 }
-
-@import "./typography.scss";

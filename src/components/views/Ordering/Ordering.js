@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import styles from './Ordering.scss';
+import styles from './Ordering.module.scss';
 
 const Ordering = () => (
   <div className={styles.component}>
