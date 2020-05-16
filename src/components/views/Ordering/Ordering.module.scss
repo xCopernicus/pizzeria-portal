@@ -1,5 +1,26 @@
 @import '../../../styles/settings.module.scss';
 
 .component {
-  padding: $base-size;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  background-color: $color-light;
+  margin-top: (4 * $base-size);
+  border: 1px solid;
+}
+
+.table {
+  display: flex;
+  border-bottom: 1px solid;
+  padding: $base-size (3 * $base-size);
+  justify-content: space-between;
+
+  h3 {
+    margin: 0;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }

@@ -1,13 +1,27 @@
 @import '../../../styles/settings.module.scss';
 
 .component {
+  font-size: (1.5 * $base-size);
   display: flex;
+  justify-content: center;
+  align-content: center;
 
   a {
-    display: inline-block;
-    width: 200px;
-    height: 100px;
-    background-color: pink;
-    font-size: 50px;
+    color: $color-dark;
+    margin: (0.5 * $base-size) 0;
+    margin-right: ($base-size * 3);
+    padding: ($base-size / 2);
+    transition: 0.1s;
+    background-color: $color-primary;
+    border: 4px solid $color-primary;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &:hover {
+      border: 4px solid $color-success;
+    }
+    &:global(.active) {
+      border: 4px solid $color-success;
+    }
   }
 }

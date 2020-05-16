@@ -1,0 +1,23 @@
+@import '../../../styles/settings.module.scss';
+
+.component {
+  border-bottom: 1px solid;
+  padding: $base-size (3 * $base-size);
+  h4 {
+    margin: 0;
+  }
+}
+
+.orders {
+  border: 1px solid;
+}
+
+.order {
+  padding: 0.5 * $base-size;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
