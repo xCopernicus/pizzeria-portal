@@ -1,3 +1,4 @@
+
 /* global require, process */
 const fs = require('fs');
 const path = require('path');
@@ -7,19 +8,30 @@ const router = jsonServer.router('build/db/app.json');
 const middlewares = jsonServer.defaults({
   static: './',
   noCors: true
-});
+  });
 const port = process.env.PORT || 3131;
+const request = require('request');
 
-server.get(/\/panel.*/, (req,res) =>{
+server.get(/\/panel.*/, (req, res) =>{
   if(req.url === '/panel'){
     req.url += '/';
   }
-  const filePath = __dirname+req.url.replace('/panel', '/build');
+  const filePath = __dirname + req.url.replace('/panel', '/build');
   if(fs.existsSync(filePath)){
     res.sendFile(filePath);
   } else {
     res.sendFile(path.join(__dirname+'/build/index.html'));
   }
+  request(
+  { url: 'http://localhost:3131/' },
+  (error, response, body) => {
+    if (error || response.statusCode !== 200) {
+      return res.status(500).json({ type: 'error', message: 'err.message' });
+    }
+
+    res.json(JSON.parse(body));
+  }
+)
 });
 
 server.use(function(req, res, next) {
@@ -30,6 +42,7 @@ server.use(function(req, res, next) {
   } else {
     req.url = '/build/front' + req.url;
   }
+  res.header('Access-Control-Allow-Origin', '*');
   next();
 });
 
