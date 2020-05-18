@@ -14,21 +14,21 @@ import Kitchen from './components/views/Kitchen/Kitchen';
 
 function App() {
   return (
-      <BrowserRouter>
-        <MainLayout>
-          <Switch>
-            <Route exact path={`${process.env.PUBLIC_URL}/`} component={Dashboard} />
-            <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />
-            <Route exact path={`${process.env.PUBLIC_URL}/tables`} component={Tables} />
-            <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/:id`} component={Booking} />
-            <Route exact path={`${process.env.PUBLIC_URL}/tables/event/:id`} component={Event} />
-            <Route exact path={`${process.env.PUBLIC_URL}/ordering`} component={Ordering} />
-            <Route exact path={`${process.env.PUBLIC_URL}/ordering/new/:id`} component={NewOrder} />
-            <Route exact path={`${process.env.PUBLIC_URL}/ordering/order/:id`} component={Order} />
-            <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen} />
-          </Switch>
-        </MainLayout>
-      </BrowserRouter>
+    <BrowserRouter>
+      <MainLayout>
+        <Switch>
+          <Route exact path={`${process.env.PUBLIC_URL}/`} component={Dashboard} />
+          <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />
+          <Route exact path={`${process.env.PUBLIC_URL}/tables`} component={Tables} />
+          <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/:id`} component={Booking} />
+          <Route exact path={`${process.env.PUBLIC_URL}/tables/event/:id`} component={Event} />
+          <Route exact path={`${process.env.PUBLIC_URL}/ordering`} component={Ordering} />
+          <Route exact path={`${process.env.PUBLIC_URL}/ordering/new/:id`} component={NewOrder} />
+          <Route exact path={`${process.env.PUBLIC_URL}/ordering/order/:id`} component={Order} />
+          <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen} />
+        </Switch>
+      </MainLayout>
+    </BrowserRouter>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Container} from '@material-ui/core'
+import {Container} from '@material-ui/core';
 
 import styles from './Dashboard.module.scss';
 

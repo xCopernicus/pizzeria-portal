@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const ProductOptionsRadios = (options) => {
 
-  let optionKeys
-  options ? optionKeys = Object.keys(options) : optionKeys = []
+  let optionKeys;
+  options ? optionKeys = Object.keys(options) : optionKeys = [];
 
   return(
     <div>
@@ -13,12 +13,13 @@ const ProductOptionsRadios = (options) => {
             type='radio'
             name='radio'
             value={options[option].price}
-            />
+          />
           {options[option].label}, {options[option].price}
         </label>
       ))}
     </div>
-  )}
+  );
+};
 
 export default ProductOptionsRadios;
 
