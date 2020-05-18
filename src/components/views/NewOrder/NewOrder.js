@@ -1,11 +1,19 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import styles from './NewOrder.module.scss'
+
+import {Container} from '@material-ui/core'
+
+import Product from '../../features/Product/Product'
+
 const Wrapper = props => (
-  <div>
-    <h2>NewOrder view</h2>
-    {props.children}
-  </div>
+  <Container maxWidth='md' className={styles.component}>
+    <div>
+      <h2>New Order</h2>
+      {props.children}
+    </div>
+  </Container>
 );
 
 const NewOrder = ({ loading: { active, error }, products, fetchProducts }) => {
@@ -30,11 +38,9 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts }) => {
   } else {
     return (
       <Wrapper>
-        <ul>
-          {products.map(({id, name, price}) => (
-            <li key={id}>{name}, {price}</li>
-          ))}
-        </ul>
+        {products.map((product) => (
+          <Product key={product.id} {...product}/>
+        ))}
       </Wrapper>
     );
   }
