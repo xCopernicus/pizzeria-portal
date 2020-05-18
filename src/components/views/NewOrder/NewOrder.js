@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-import styles from './NewOrder.module.scss'
+import styles from './NewOrder.module.scss';
 
-import {Container} from '@material-ui/core'
+import {Container} from '@material-ui/core';
 
-import Product from '../../features/Product/Product'
+import Product from '../../features/Product/Product';
 
 const NewOrder = ({ loading: { active, error }, products, fetchProducts, match }) => {
 
   useEffect(() => (
     fetchProducts()
-  ), [fetchProducts])
+  ), [fetchProducts]);
 
   if(active || !products.length){
     return (
@@ -38,7 +38,7 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts, match }
       </Container>
     );
   }
-}
+};
 
 NewOrder.propTypes = {
   fetchProducts: PropTypes.func,
@@ -46,7 +46,7 @@ NewOrder.propTypes = {
     active: PropTypes.bool,
     error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   }),
-}
+};
 
 
 export default NewOrder;

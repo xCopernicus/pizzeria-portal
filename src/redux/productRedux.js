@@ -1,5 +1,5 @@
-import Axios from "axios";
-import { api } from "../settings";
+import Axios from 'axios';
+import { api } from '../settings';
 
 /* selectors */
 export const getAllProducts = ({products}) => products.data;
@@ -47,7 +47,7 @@ export default function reducer(statePart = [], action = {}) {
           active: true,
           error: false,
         },
-      }
+      };
     }
     case FETCH_ALL_SUCCESS: {
       return {
@@ -57,7 +57,7 @@ export default function reducer(statePart = [], action = {}) {
           error: false,
         },
         data: action.payload,
-      }
+      };
     }
     case FETCH_ALL_ERROR: {
       return {
@@ -66,7 +66,7 @@ export default function reducer(statePart = [], action = {}) {
           active: false,
           error: action.payload,
         },
-      }
+      };
     }
     default:
       return statePart;

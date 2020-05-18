@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Login.module.scss';
 
-import {Container} from '@material-ui/core'
+import {Container} from '@material-ui/core';
 
 const Login = () => (
   <Container maxWidth='sm'>
