@@ -24,7 +24,6 @@ export const fetchProductsFromAPI = () => {
   return (dispatch, getState) => {
     if(getState().products.data.length === 0){
       dispatch(fetchProductsStarted());
-      console.log(`${api.url}/${api.product}`)
 
       Axios
         .get(`${api.url}/${api.product}`)

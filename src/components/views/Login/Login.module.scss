@@ -2,4 +2,20 @@
 
 .component {
   padding: $base-size;
+  background-color: $color-light;
+  text-align: center;
+  border: 1px solid;
+
+  h2 {
+    margin: $base-size 0;
+  }
+}
+
+.input {
+  margin: $base-size 0;
+
+  * {
+    display: inline-block;
+    margin: 0 $base-size;
+  }
 }

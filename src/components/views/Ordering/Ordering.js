@@ -12,21 +12,21 @@ const Ordering = () => (
       <div className={styles.table}>
         <h3>Table 1</h3>
         <div className={styles.buttons}>
-          <Link to={`${process.env.PUBLIC_URL}/ordering/new`} ><Button variant='outlined' size='small' color='secondary'>New Order</Button></Link>
+          <Link to={`${process.env.PUBLIC_URL}/ordering/new/1`} ><Button variant='outlined' size='small' color='secondary'>New Order</Button></Link>
         </div>
       </div>
       <TableOrders />
       <div className={styles.table}>
         <h3>Table 2</h3>
         <div className={styles.buttons}>
-          <Link to={`${process.env.PUBLIC_URL}/ordering/new`} ><Button variant='outlined' size='small' color='secondary'>New Order</Button></Link>
+          <Link to={`${process.env.PUBLIC_URL}/ordering/new/2`} ><Button variant='outlined' size='small' color='secondary'>New Order</Button></Link>
         </div>
       </div>
       <TableOrders />
       <div className={styles.table}>
         <h3>Table 3</h3>
         <div className={styles.buttons}>
-          <Link to={`${process.env.PUBLIC_URL}/ordering/new`} ><Button variant='outlined' size='small' color='secondary'>New Order</Button></Link>
+          <Link to={`${process.env.PUBLIC_URL}/ordering/new/3`} ><Button variant='outlined' size='small' color='secondary'>New Order</Button></Link>
         </div>
       </div>
       <TableOrders />

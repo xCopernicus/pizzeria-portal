@@ -7,16 +7,7 @@ import {Container} from '@material-ui/core'
 
 import Product from '../../features/Product/Product'
 
-const Wrapper = props => (
-  <Container maxWidth='md' className={styles.component}>
-    <div>
-      <h2>New Order</h2>
-      {props.children}
-    </div>
-  </Container>
-);
-
-const NewOrder = ({ loading: { active, error }, products, fetchProducts }) => {
+const NewOrder = ({ loading: { active, error }, products, fetchProducts, match }) => {
 
   useEffect(() => (
     fetchProducts()
@@ -24,24 +15,27 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts }) => {
 
   if(active || !products.length){
     return (
-      <Wrapper>
+      <Container maxWidth='md' className={styles.component}>
+        <h2>New Order for Table {match.params.id}</h2>
         <p>Loading...</p>
-      </Wrapper>
+      </Container>
     );
   } else if(error) {
     return (
-      <Wrapper>
+      <Container maxWidth='md' className={styles.component}>
+        <h2>New Order for Table {match.params.id}</h2>
         <p>Error! Details:</p>
         <pre>{error}</pre>
-      </Wrapper>
+      </Container>
     );
   } else {
     return (
-      <Wrapper>
+      <Container maxWidth='md' className={styles.component}>
+        <h2>New Order for Table {match.params.id}</h2>
         {products.map((product) => (
           <Product key={product.id} {...product}/>
         ))}
-      </Wrapper>
+      </Container>
     );
   }
 }

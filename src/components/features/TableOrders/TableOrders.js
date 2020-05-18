@@ -10,15 +10,15 @@ const TableOrders = () => (
     <div className={styles.orders}>
       <div className={styles.order}>
         status createdDate Total
-        <Button variant='outlined' size='small' color='secondary'>Ready</Button>
+        <Button variant='outlined' size='small' color='secondary'>Done</Button>
       </div>
       <div className={styles.order}>
         status createdDate Total
-        <Button variant='outlined' size='small' color='secondary'>Ready</Button>
+        <Button variant='outlined' size='small' color='secondary'>Done</Button>
       </div>
       <div className={styles.order}>
         status createdDate Total
-        <Button variant='outlined' size='small' color='secondary'>Ready</Button>
+        <Button variant='outlined' size='small' color='secondary'>Done</Button>
       </div>
     </div>
   </div>

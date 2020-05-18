@@ -3,6 +3,11 @@
 .component {
   border-bottom: 1px solid;
   padding: $base-size (3 * $base-size);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
   h4 {
     margin: 0;
   }
