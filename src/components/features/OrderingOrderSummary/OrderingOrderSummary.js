@@ -2,9 +2,9 @@ import React from 'react';
 
 import {Button} from '@material-ui/core';
 
-import styles from './TableOrders.module.scss';
+import styles from './OrderingOrderSummary.module.scss';
 
-const TableOrders = () => (
+const OrderingOrderSummary = () => (
   <div className={styles.component}>
     <h4>Orders</h4>
     <div className={styles.orders}>
@@ -24,4 +24,4 @@ const TableOrders = () => (
   </div>
 );
 
-export default TableOrders;
+export default OrderingOrderSummary;

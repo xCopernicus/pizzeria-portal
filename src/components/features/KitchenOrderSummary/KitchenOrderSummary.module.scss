@@ -1,8 +1,12 @@
 @import '../../../styles/settings.module.scss';
 
-.products, .basket {
-  padding: $base-size;
+.component {
   background-color: $color-light;
   border: 1px solid;
-  margin: $base-size 0;
+}
+
+.product {
+  background-color: $color-light;
+  border: 1px solid;
+  margin: $base-size;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './Login.module.scss';
+import {Container, Button} from '@material-ui/core';
 
-import {Container} from '@material-ui/core';
+import styles from './Login.module.scss';
 
 const Login = () => (
   <Container maxWidth='sm'>
@@ -18,6 +18,7 @@ const Login = () => (
           <input type='text' />
         </div>
       </form>
+      <Button variant='contained'>Login</Button>
     </div>
   </Container>
 );

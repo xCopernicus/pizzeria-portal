@@ -3,10 +3,18 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import productReducer from './productRedux';
+import orderReducer from './orderRedux';
 
 // define initial state and shallow-merge initial data
 const initialState = {
   products: {
+    loading: {
+      active: false,
+      error: false,
+    },
+    data: [],
+  },
+  orders: {
     loading: {
       active: false,
       error: false,
@@ -18,6 +26,7 @@ const initialState = {
 // define reducers
 const reducers = {
   products: productReducer,
+  orders: orderReducer,
 };
 
 // add blank reducers for initial state properties without reducers

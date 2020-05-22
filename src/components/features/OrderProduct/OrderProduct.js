@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Product.module.scss';
+import styles from './OrderProduct.module.scss';
 
 import {Button} from '@material-ui/core';
 import ProductOptions from '../ProductOptions/ProductOptions';
@@ -10,7 +10,7 @@ const sendOrder = () => {
   console.log('sendOrder');
 };
 
-const Product = ({name, price, params}) => {
+const OrderProduct = ({name, price, params}) => {
 
   let paramKeys;
   params ? paramKeys = Object.keys(params) : paramKeys = [];
@@ -23,15 +23,15 @@ const Product = ({name, price, params}) => {
       ))}
       <input type='number' />
       <p>Price: {price}</p>
-      <Button variant='outlined' size='small' color='secondary' onClick={sendOrder}>Order</Button>
+      <Button variant='outlined' size='small' color='secondary' onClick={sendOrder}>Add</Button>
     </div>
   );
 };
 
-Product.propTypes = {
+OrderProduct.propTypes = {
   name: PropTypes.string,
   price: PropTypes.number,
   params: PropTypes.object,
 };
 
-export default Product;
+export default OrderProduct;

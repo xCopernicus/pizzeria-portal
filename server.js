@@ -1,5 +1,5 @@
 
-/* global require, process */
+/* global */
 const fs = require('fs');
 const path = require('path');
 const jsonServer = require('json-server');
@@ -7,8 +7,8 @@ const server = jsonServer.create();
 const router = jsonServer.router('build/db/app.json');
 const middlewares = jsonServer.defaults({
   static: './',
-  noCors: true
-  });
+  noCors: true,
+});
 const port = process.env.PORT || 3131;
 const request = require('request');
 
@@ -23,15 +23,15 @@ server.get(/\/panel.*/, (req, res) =>{
     res.sendFile(path.join(__dirname+'/build/index.html'));
   }
   request(
-  { url: 'http://localhost:3131/' },
-  (error, response, body) => {
-    if (error || response.statusCode !== 200) {
-      return res.status(500).json({ type: 'error', message: 'err.message' });
-    }
+    { url: 'http://localhost:3131/' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: 'err.message' });
+      }
 
-    res.json(JSON.parse(body));
-  }
-)
+      res.json(JSON.parse(body));
+    }
+  );
 });
 
 server.use(function(req, res, next) {
@@ -43,6 +43,8 @@ server.use(function(req, res, next) {
     req.url = '/build/front' + req.url;
   }
   res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Access-Control-Allow-Headers', '*');
   next();
 });
 

@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { api } from '../settings';
+import {api} from '../settings';
 
 /* selectors */
 export const getAllProducts = ({products}) => products.data;

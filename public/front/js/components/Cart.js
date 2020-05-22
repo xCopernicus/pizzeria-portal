@@ -122,6 +122,8 @@ export class Cart {
     const url = settings.db.url + '/' + settings.db.order;
 
     let payload = {
+      status: 'ordered',
+      type: 'delivery',
       address: thisCart.dom.address.value,
       phone: thisCart.dom.phone.value,
       totalPrice: thisCart.totalPrice,

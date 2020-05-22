@@ -7,10 +7,10 @@ import Login from './components/views/Login/Login';
 import Tables from './components/views/Tables/Tables';
 import Booking from './components/views/Booking/Booking';
 import Event from './components/views/Event/Event';
-import Ordering from './components/views/Ordering/Ordering';
+import Ordering from './components/views/Ordering/OrderingContainer';
 import NewOrder from './components/views/NewOrder/NewOrderContainer';
 import Order from './components/views/Order/Order';
-import Kitchen from './components/views/Kitchen/Kitchen';
+import Kitchen from './components/views/Kitchen/KitchenContainer';
 
 function App() {
   return (

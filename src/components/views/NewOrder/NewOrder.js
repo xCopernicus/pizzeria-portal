@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './NewOrder.module.scss';
 
-import {Container} from '@material-ui/core';
+import {Container, Button} from '@material-ui/core';
 
-import Product from '../../features/Product/Product';
+import Product from '../../features/OrderProduct/OrderProduct';
 
 const NewOrder = ({ loading: { active, error }, products, fetchProducts, match }) => {
 
@@ -32,9 +32,15 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts, match }
     return (
       <Container maxWidth='md' className={styles.component}>
         <h2>New Order for Table {match.params.id}</h2>
-        {products.map((product) => (
-          <Product key={product.id} {...product}/>
-        ))}
+        <div className={styles.basket}>
+          <h3>Basket</h3>
+          <Button variant='outlined' size='small' color='secondary'>Order</Button>
+        </div>
+        <div className={styles.products}>
+          {products.map((product) => (
+            <Product key={product.id} {...product}/>
+          ))}
+        </div>
       </Container>
     );
   }
