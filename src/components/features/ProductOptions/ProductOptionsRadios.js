@@ -1,44 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ProductOptionsRadios = (options) => (
-  <div>
-    {Object.keys(options).map(option => (
-      <label key={option}>
-        <input
-          type='radio'
-          name='radio'
-          value={options[option].price}
-        />
-        {options[option].label}, {options[option].price}
-      </label>
-    ))}
-  </div>
-);
+const ProductOptionsRadios = ({optionsCallback, ...options}) => {
 
-export default ProductOptionsRadios;
-
-
-/*import React from 'react'
-
-import {RadioGroup, FormControlLabel, Radio} from '@material-ui/core'
-
-const ProductOptionsRadios = (options) => {
-
-  const [value, setValue] = React.useState(1);
-
-  const handleChange = (event) => {
-    setValue(event.target.value)
-  }
-
-  let optionKeys
-  options ? optionKeys = Object.keys(options) : optionKeys = []
 
   return(
-    <RadioGroup aria-label='gender' name='gender1' value={value} onChange={handleChange}>
-      {optionKeys.map(option => (
-        <FormControlLabel value={options[option].price} control={<Radio />} label={`${options[option].label}, ${options[option].price}`} />
-      ))}
-    </RadioGroup>
-  )}
+    <div>
+      {Object.keys(options).map(option => {
 
-export default ProductOptionsRadios;*/
+        let optionsChosen = {[option]: options[option].label};
+        optionsCallback(optionsChosen);
+
+        const changeOptionsChosen = (optionKey, value) => {
+          optionsChosen = {[optionKey]: value};
+          optionsCallback(optionsChosen);
+        };
+
+        return(
+          <label key={option}>
+            <input
+              type='radio'
+              name='radio'
+              value={option}
+              onChange={() => changeOptionsChosen(option, options[option].label)}
+            />
+            {options[option].label}, {options[option].price}
+          </label>
+        );
+      })}
+    </div>
+  );
+};
+
+ProductOptionsRadios.propTypes = {
+  optionsCallback: PropTypes.func,
+};
+
+export default ProductOptionsRadios;
