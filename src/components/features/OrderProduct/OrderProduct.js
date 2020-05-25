@@ -36,7 +36,6 @@ const OrderProduct = ({name, id, price, params, addProduct}) => {
               },
             },
           };
-
           priceSingle[param] = dataFromChild.price;
           Object.keys(product.params).forEach(param => {
             product.priceSingle += priceSingle[param];

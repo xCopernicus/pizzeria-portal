@@ -5,16 +5,22 @@ import ProductOptions from '../DisplayProductOptions/DisplayProductOptions';
 
 import styles from './ProductParams.module.scss';
 
-const ProductParams = ({params}) => (
-  <div className={styles.component}>
-    {Object.keys(params).map(param => (
-      <div key={params[param].label}>
-        <p>{params[param].label}:</p>
-        <ProductOptions {...params[param]} />
-      </div>
-    ))}
-  </div>
-);
+const ProductParams = ({params}) => {
+
+  let keys;
+  params ? keys = Object.keys(params) : keys = [];
+
+  return(
+    <div className={styles.component}>
+      {keys.map(param => (
+        <div key={params[param].label}>
+          <p>{params[param].label}:</p>
+          <ProductOptions {...params[param]} />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 ProductParams.propTypes = {
   params: PropTypes.object,

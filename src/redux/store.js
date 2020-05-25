@@ -22,9 +22,7 @@ const initialState = {
     },
     data: [],
   },
-  basket: {
-    products: [],
-  },
+  basket: [],
 };
 
 // define reducers

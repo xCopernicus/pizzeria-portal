@@ -11,7 +11,7 @@ import {api} from '../../../settings.js';
 
 import styles from './NewOrder.module.scss';
 
-const NewOrder = ({ loading: { active, error }, products, fetchProducts, basket, match, addProduct, deleteProduct}) => {
+const NewOrder = ({ loading: { active, error }, products, fetchProducts, basket, match, addProduct, deleteProduct, clearBasket}) => {
 
   useEffect(() => {
     fetchProducts();
@@ -36,6 +36,7 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts, basket,
         })
         .then((res) => {
           console.log(res);
+          clearBasket();
         })
         .catch(err => {
           console.log(err);
