@@ -95,7 +95,7 @@ const app = window.app = {
     this.initData();
     this.initCart();
     this.initBooking();
-  }
+  },
 };
 
 app.init();

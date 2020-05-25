@@ -6,43 +6,46 @@ import ProductOptions from '../ProductOptions/ProductOptions';
 
 import styles from './OrderProduct.module.scss';
 
-const OrderProduct = ({name, price, params, addProduct}) => {
+const OrderProduct = ({name, id, price, params, addProduct}) => {
 
-  const [amount, setAmount] = useState('');
-
+  const [state, setState] = useState(1);
   let paramKeys;
   params ? paramKeys = Object.keys(params) : paramKeys = [];
-
-  let paramsChosen = {};
-
   let product = {
     id: name,
-    amount: amount,
-    price: price * amount,
     priceSingle: price,
-    params: paramsChosen,
+    price: state * price,
+    amount: state,
   };
-
-  //console.log(product);
-
-
 
   return(
     <div className={styles.component}>
-      <h3>{name}</h3>
+      <h3>{name}, {price}</h3>
       {paramKeys.map(param => {
         const optionsCallback = (dataFromChild) => {
-          paramsChosen[param] = {
-            label: params[param].label,
-            options: dataFromChild,
+          product = {
+            id: id,
+            priceSingle: price,
+            amount: state,
+            params: {
+              ...product.params,
+              [param]: {
+                label: params[param].label,
+                options: dataFromChild,
+              },
+            },
           };
-          console.log(paramsChosen);
+          Object.keys(product.params).forEach(param => {
+            product.priceSingle += product.params[param].options.price;
+            product.price = state * product.priceSingle;
+          });
         };
+        // [TO DO] change state for price to change
         return(
           <ProductOptions key={`${params[param].label} options`} {...params[param]} optionsCallback={optionsCallback} />
         );
       })}
-      <input type='number' value={amount} onChange={event => setAmount(event.target.value)} />
+      <input type='number' value={state} onChange={event => setState(parseInt(event.target.value))} />
       <p>Price: {price}</p>
       <Button variant='outlined' size='small' color='secondary' onClick={() => addProduct(product)}>Add</Button>
     </div>
@@ -51,6 +54,7 @@ const OrderProduct = ({name, price, params, addProduct}) => {
 
 OrderProduct.propTypes = {
   name: PropTypes.string,
+  id: PropTypes.string,
   price: PropTypes.number,
   params: PropTypes.object,
   addProduct: PropTypes.func,

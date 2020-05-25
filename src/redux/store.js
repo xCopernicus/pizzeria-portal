@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import productReducer from './productRedux';
 import orderReducer from './orderRedux';
-import newOrderReducer from './newOrderRedux';
+import basketReducer from './basketRedux';
 
 // define initial state and shallow-merge initial data
 const initialState = {
@@ -22,7 +22,7 @@ const initialState = {
     },
     data: [],
   },
-  newOrder: {
+  basket: {
     products: [],
   },
 };
@@ -31,7 +31,7 @@ const initialState = {
 const reducers = {
   products: productReducer,
   orders: orderReducer,
-  newOrder: newOrderReducer,
+  basket: basketReducer,
 };
 
 // add blank reducers for initial state properties without reducers

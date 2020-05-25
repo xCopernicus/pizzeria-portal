@@ -20,7 +20,7 @@ const ProductOptions = ({label, type, options, optionsCallback}) => {
     return(
       <div>
         <h4>{label}</h4>
-        <OptionsComponent {...options} optionsCallback={optionsCallback} />
+        <OptionsComponent label={label} options={options} optionsCallback={optionsCallback} />
       </div>
     );
   }

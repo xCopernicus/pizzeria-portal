@@ -70,7 +70,7 @@ export const select = {
     water: '[name="starter"][value="water"]',
     bread: '[name="starter"][value="bread"]',
     phone: '[name="phone"]',
-    address: '[name="address"]'
+    address: '[name="address"]',
   },
   nav: {
     links: '.main-nav a',
@@ -81,7 +81,7 @@ export const select = {
     slides: '.carousel-slide',
     order: '[href="#order"]',
     booking: '[href="#booking"]',
-  }
+  },
 };
 
 export const classNames = {

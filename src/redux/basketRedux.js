@@ -1,5 +1,6 @@
 /* selectors */
-export const getInfoForNewOrder = ({newOrder}) => newOrder;
+export const getInfoForBasket = ({basket}) => basket;
+export const getProductsForBasket = ({basket}) => basket.products;
 
 /* action name creator */
 const reducerName = 'newOrder';
@@ -11,8 +12,8 @@ const REMOVE_PRODUCT = createActionName('DELETE_PRODUCT');
 
 /* action creators */
 
-export const addProductToNewOrder = payload => ({ payload, type: ADD_PRODUCT });
-export const removeProduct = payload => ({ payload, type: REMOVE_PRODUCT });
+export const addProductToBasket = payload => ({ payload, type: ADD_PRODUCT });
+export const removeProductFromBasket = payload => ({ payload, type: REMOVE_PRODUCT });
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
@@ -28,6 +29,7 @@ export default function reducer(statePart = [], action = {}) {
     case REMOVE_PRODUCT:
       return {
         ...statePart,
+        products: statePart.products.filter(product => product !== statePart.products[action.payload]),
       };
     default:
       return statePart;

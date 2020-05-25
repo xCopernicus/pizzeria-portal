@@ -109,22 +109,17 @@ export class Product {
           if (!thisProduct.params[paramID]){
             thisProduct.params[paramID] = {
               label: thisProduct.data.params[paramID].label,
-              options: {}
+              options: {},
             };
           }
           thisProduct.params[paramID].options[optionID] = thisProduct.data.params[paramID].options[optionID].label;
           for(const imgActive of imgsActive){
             imgActive.classList.add(classNames.menuProduct.imageVisible);
           }
-          if (!thisProduct.data.params[paramID].options[optionID].default){
-            price += thisProduct.data.params[paramID].options[optionID].price;
-          }
+          price += thisProduct.data.params[paramID].options[optionID].price;
         } else {
           for(const imgActive of imgsActive){
             imgActive.classList.remove(classNames.menuProduct.imageVisible);
-          }
-          if (thisProduct.data.params[paramID].options[optionID].default){
-            price -= thisProduct.data.params[paramID].options[optionID].price;
           }
         }
       }

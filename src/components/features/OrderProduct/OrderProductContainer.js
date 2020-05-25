@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import OrderProduct from './OrderProduct';
-import {getInfoForNewOrder, addProductToNewOrder} from '../../../redux/newOrderRedux';
+import {getInfoForBasket, addProductToBasket} from '../../../redux/basketRedux';
 
 const mapStateToProps = (state) => ({
-  products: getInfoForNewOrder(state),
+  products: getInfoForBasket(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addProduct: product => dispatch(addProductToNewOrder(product)),
+  addProduct: product => dispatch(addProductToBasket(product)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderProduct);
