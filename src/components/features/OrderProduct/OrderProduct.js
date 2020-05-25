@@ -17,6 +17,7 @@ const OrderProduct = ({name, id, price, params, addProduct}) => {
     price: state * price,
     amount: state,
   };
+  let priceSingle = {};
 
   return(
     <div className={styles.component}>
@@ -31,12 +32,14 @@ const OrderProduct = ({name, id, price, params, addProduct}) => {
               ...product.params,
               [param]: {
                 label: params[param].label,
-                options: dataFromChild,
+                options: dataFromChild.options,
               },
             },
           };
+
+          priceSingle[param] = dataFromChild.price;
           Object.keys(product.params).forEach(param => {
-            product.priceSingle += product.params[param].options.price;
+            product.priceSingle += priceSingle[param];
             product.price = state * product.priceSingle;
           });
         };
