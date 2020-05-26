@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 Object.filter = (obj, keyToDelete) => {
@@ -10,36 +10,10 @@ Object.filter = (obj, keyToDelete) => {
   return result;
 };
 
-const ProductOptionsCheckboxes = ({optionsCallback, options}) => {
+const ProductOptionsCheckboxes = ({optionsCallback, options, optionsChosen}) => {
 
-  let defaultOptions = {};
-  let defaultPrice = 0;
-  Object.keys(options).filter(option => options[option].default === true).forEach(option => {
-    defaultOptions[option] = options[option].label;
-    defaultPrice += options[option].price;
-  });
-
-  const [state, setState] = useState({price: defaultPrice, options: defaultOptions});
-
-  useEffect(() => {
-    optionsCallback(state);
-  });
-
-  const changeOptionsChosen = (option, value, checked) => {
-    if (checked){
-      setState({
-        price: state.price + options[option].price,
-        options: {
-          ...state.options,
-          [option]: value,
-        },
-      });
-    } else if (!checked){
-      setState({
-        price: state.price - options[option].price,
-        options: Object.filter(state.options, option),
-      });
-    }
+  const changeOptionsChosen = (option, checked) => {
+    optionsCallback(checked ? {...optionsChosen, [option]: options[option].label} : Object.filter(optionsChosen, option));
   };
 
   return(
@@ -48,8 +22,8 @@ const ProductOptionsCheckboxes = ({optionsCallback, options}) => {
         <label key={option}>
           <input
             type='checkbox'
-            checked={Object.keys(state.options).includes(option)}
-            onChange={event => changeOptionsChosen(option, options[option].label, event.currentTarget.checked)}
+            checked={Object.keys(optionsChosen).includes(option)}
+            onChange={event => changeOptionsChosen(option, event.currentTarget.checked)}
           />
           {options[option].label}, {options[option].price}
         </label>
@@ -61,6 +35,7 @@ const ProductOptionsCheckboxes = ({optionsCallback, options}) => {
 ProductOptionsCheckboxes.propTypes = {
   optionsCallback: PropTypes.func,
   options: PropTypes.object,
+  optionsChosen: PropTypes.object,
 };
 
 export default ProductOptionsCheckboxes;

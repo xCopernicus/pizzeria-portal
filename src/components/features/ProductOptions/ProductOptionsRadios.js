@@ -1,20 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProductOptionsRadios = ({optionsCallback, label, options}) => {
-
-  const [state, setState] = useState({price: options[Object.keys(options)[0]].price, options: {[Object.keys(options)[0]]: Object.values(options)[0].label}});
-
-  useEffect(() => {
-    optionsCallback(state);
-  });
-
-  const changeOptionsChosen = (option, value) => {
-    setState({
-      price: options[option].price,
-      options: {[option]: value},
-    });
-  };
+const ProductOptionsRadios = ({optionsCallback, label, options, optionsChosen}) => {
 
   return(
     <div>
@@ -22,9 +9,9 @@ const ProductOptionsRadios = ({optionsCallback, label, options}) => {
         <label key={option}>
           <input
             type='radio'
+            checked={Object.keys(optionsChosen).includes(option)}
             name={label}
-            checked={Object.keys(state.options).includes(option)}
-            onChange={() => changeOptionsChosen(option, options[option].label)}
+            onChange={() => optionsCallback({[option]: options[option].label})}
           />
           {options[option].label}, {options[option].price}
         </label>
@@ -37,6 +24,7 @@ ProductOptionsRadios.propTypes = {
   optionsCallback: PropTypes.func,
   label: PropTypes.string,
   options: PropTypes.object,
+  optionsChosen: PropTypes.object,
 };
 
 export default ProductOptionsRadios;

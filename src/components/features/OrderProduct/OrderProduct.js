@@ -8,48 +8,71 @@ import styles from './OrderProduct.module.scss';
 
 const OrderProduct = ({name, id, price, params, addProduct}) => {
 
-  const [state, setState] = useState(1);
   let paramKeys;
   params ? paramKeys = Object.keys(params) : paramKeys = [];
-  let product = {
-    id: name,
-    priceSingle: price,
-    price: state * price,
-    amount: state,
+
+  const calculateCurrentPrice = (newParamsChosen) => {
+    let currentPrice = price;
+    paramKeys.forEach(param => {
+      Object.keys(params[param].options).forEach(option => {
+        if (newParamsChosen[param].options[option]){
+          currentPrice += params[param].options[option].price;
+        }
+      });
+    });
+    return currentPrice;
   };
-  let priceSingle = {};
+
+  let paramsChosen = {};
+  paramKeys.forEach(param => {
+    paramsChosen[param] = {
+      label: params[param].label,
+      options: {},
+    };
+    Object.keys(params[param].options).forEach(option => {
+      if (params[param].options[option].default){
+        paramsChosen[param].options[option] = params[param].options[option].label;
+      }
+    });
+  });
+
+  const [state, setState] = useState({amount: 1, currentPrice: calculateCurrentPrice(paramsChosen), paramsChosen: paramsChosen});
+
+  const handleAddProduct = () => {
+    addProduct({
+      id: id,
+      amount: state.amount,
+      price: state.amount * state.currentPrice,
+      priceSingle: state.currentPrice,
+      params: state.paramsChosen,
+    });
+  };
 
   return(
     <div className={styles.component}>
       <h3>{name}, {price}</h3>
       {paramKeys.map(param => {
-        const optionsCallback = (dataFromChild) => {
-          product = {
-            id: id,
-            priceSingle: price,
-            amount: state,
-            params: {
-              ...product.params,
-              [param]: {
-                label: params[param].label,
-                options: dataFromChild.options,
-              },
+        const optionsCallback = (data) => {
+          let newParamsChosen = {
+            ...state.paramsChosen,
+            [param]: {
+              label: params[param].label,
+              options: data,
             },
           };
-          priceSingle[param] = dataFromChild.price;
-          Object.keys(product.params).forEach(param => {
-            product.priceSingle += priceSingle[param];
-            product.price = state * product.priceSingle;
+          setState({
+            ...state,
+            paramsChosen: newParamsChosen,
+            currentPrice: calculateCurrentPrice(newParamsChosen),
           });
         };
-        // [TO DO] change state for price to change
         return(
-          <ProductOptions key={`${params[param].label} options`} {...params[param]} optionsCallback={optionsCallback} />
+          <ProductOptions key={`${params[param].label} options`} {...params[param]} optionsChosen={state.paramsChosen[param].options} optionsCallback={optionsCallback} />
         );
       })}
-      <input type='number' value={state} onChange={event => setState(parseInt(event.target.value))} />
-      <p>Price: {price}</p>
-      <Button variant='outlined' size='small' color='secondary' onClick={() => addProduct(product)}>Add</Button>
+      <input type='number' value={state.amount} onChange={e => setState({...state, amount: parseInt(e.target.value)})} />
+      <p>Price: {state.currentPrice * state.amount}</p>
+      <Button variant='outlined' size='small' color='secondary' onClick={() => handleAddProduct()}>Add</Button>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const optionsType = {
   select: ProductOptionsSelect,
 };
 
-const ProductOptions = ({label, type, options, optionsCallback}) => {
+const ProductOptions = ({label, type, options, optionsCallback, optionsChosen}) => {
 
   const OptionsComponent = optionsType[type];
 
@@ -20,7 +20,7 @@ const ProductOptions = ({label, type, options, optionsCallback}) => {
     return(
       <div>
         <h4>{label}</h4>
-        <OptionsComponent label={label} options={options} optionsCallback={optionsCallback} />
+        <OptionsComponent label={label} options={options} optionsChosen={optionsChosen} optionsCallback={optionsCallback} />
       </div>
     );
   }

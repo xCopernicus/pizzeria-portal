@@ -17,7 +17,7 @@ const Ordering = ({fetchOrders}) => {
     return () =>{
       clearInterval(interval);
     };
-  }, [fetchOrders]);
+  });
 
   return(
     <Container maxWidth='sm'>
