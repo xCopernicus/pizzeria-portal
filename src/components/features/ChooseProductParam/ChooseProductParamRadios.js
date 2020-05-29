@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProductOptionsRadios = ({optionsCallback, label, options, optionsChosen}) => {
+const ChooseProductParamRadios = ({optionsCallback, label, options, optionsChosen}) => {
 
   return(
     <div>
@@ -20,11 +20,11 @@ const ProductOptionsRadios = ({optionsCallback, label, options, optionsChosen}) 
   );
 };
 
-ProductOptionsRadios.propTypes = {
+ChooseProductParamRadios.propTypes = {
   optionsCallback: PropTypes.func,
   label: PropTypes.string,
   options: PropTypes.object,
   optionsChosen: PropTypes.object,
 };
 
-export default ProductOptionsRadios;
+export default ChooseProductParamRadios;

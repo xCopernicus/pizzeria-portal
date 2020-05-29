@@ -9,7 +9,7 @@ import Booking from './components/views/Booking/Booking';
 import Event from './components/views/Event/Event';
 import Ordering from './components/views/Ordering/OrderingContainer';
 import NewOrder from './components/views/NewOrder/NewOrderContainer';
-import Order from './components/views/Order/Order';
+import Order from './components/views/Order/OrderContainer';
 import Kitchen from './components/views/Kitchen/KitchenContainer';
 
 function App() {

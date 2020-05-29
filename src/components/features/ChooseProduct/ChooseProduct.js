@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import {Button} from '@material-ui/core';
-import ProductOptions from '../ProductOptions/ProductOptions';
+import ChooseProductParam from '../ChooseProductParam/ChooseProductParam';
 
-import styles from './OrderProduct.module.scss';
+import styles from './ChooseProduct.module.scss';
 
-const OrderProduct = ({name, id, price, params, addProduct}) => {
+const ChooseProduct = ({name, id, price, params, addProduct}) => {
 
   let paramKeys;
   params ? paramKeys = Object.keys(params) : paramKeys = [];
@@ -67,7 +67,7 @@ const OrderProduct = ({name, id, price, params, addProduct}) => {
           });
         };
         return(
-          <ProductOptions key={`${params[param].label} options`} {...params[param]} optionsChosen={state.paramsChosen[param].options} optionsCallback={optionsCallback} />
+          <ChooseProductParam key={`${params[param].label} options`} {...params[param]} optionsChosen={state.paramsChosen[param].options} optionsCallback={optionsCallback} />
         );
       })}
       <input type='number' value={state.amount} onChange={e => setState({...state, amount: parseInt(e.target.value)})} />
@@ -77,7 +77,7 @@ const OrderProduct = ({name, id, price, params, addProduct}) => {
   );
 };
 
-OrderProduct.propTypes = {
+ChooseProduct.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
   price: PropTypes.number,
@@ -85,4 +85,4 @@ OrderProduct.propTypes = {
   addProduct: PropTypes.func,
 };
 
-export default OrderProduct;
+export default ChooseProduct;

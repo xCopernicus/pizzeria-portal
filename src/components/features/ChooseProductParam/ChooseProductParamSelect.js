@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProductOptionsSelect = ({optionsCallback, options}) => {
+const ChooseProductParamSelect = ({optionsCallback, options}) => {
 
   const changeOptionsChosen = (option) => {
     optionsCallback({[option]: options[option].label});
@@ -18,9 +18,9 @@ const ProductOptionsSelect = ({optionsCallback, options}) => {
   );
 };
 
-ProductOptionsSelect.propTypes = {
+ChooseProductParamSelect.propTypes = {
   optionsCallback: PropTypes.func,
   options: PropTypes.object,
 };
 
-export default ProductOptionsSelect;
+export default ChooseProductParamSelect;

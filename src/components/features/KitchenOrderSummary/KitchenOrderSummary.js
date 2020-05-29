@@ -5,7 +5,7 @@ import {api} from '../../../settings';
 
 import {Button} from '@material-ui/core';
 
-import ProductParams from '../ProductParams/ProductParams';
+import DisplayProduct from '../DisplayProduct/DisplayProduct';
 
 import styles from './KitchenOrderSummary.module.scss';
 
@@ -35,12 +35,7 @@ const KitchenOrderSummary = ({id, status, products, fetchOrders, ...other}) => {
       {products.map(product => {
         productKey++;
         return(
-          <div className={styles.product} key={productKey}>
-            <p>Name: {product.id}</p>
-            <p>Amout: {product.amount}</p>
-            <p>Params: </p>
-            <ProductParams {...product} />
-          </div>
+          <DisplayProduct key={productKey} {...product} />
         );
       })}
     </div>

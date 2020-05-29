@@ -4,6 +4,7 @@ import {api} from '../settings';
 /* selectors */
 export const getAllOrders = ({orders}) => orders.data;
 export const getLocalOrders = ({orders}) => orders.data.filter(order => order.type === 'local');
+export const getOrder = ({orders}, id) => orders.data.filter(order => order.id === parseInt(id))[0];
 export const getOrdersLoadingState = ({orders}) => orders.loading;
 
 /* action name creator */

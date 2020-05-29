@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 import {Container, Button} from '@material-ui/core';
 
-import Product from '../../features/OrderProduct/OrderProduct';
+import ChooseProduct from '../../features/ChooseProduct/ChooseProduct';
 import BasketItem from '../../features/BasketItem/BasketItem';
 
 import {api} from '../../../settings.js';
@@ -84,7 +84,7 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts, basket,
         </div>
         <div className={styles.products}>
           {products.map(product => (
-            <Product key={product.id} {...product} addProduct={addProduct}/>
+            <ChooseProduct key={product.id} {...product} addProduct={addProduct}/>
           ))}
         </div>
       </Container>

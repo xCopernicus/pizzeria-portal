@@ -10,7 +10,7 @@ Object.filter = (obj, keyToDelete) => {
   return result;
 };
 
-const ProductOptionsCheckboxes = ({optionsCallback, options, optionsChosen}) => {
+const ChooseProductParamCheckboxes = ({optionsCallback, options, optionsChosen}) => {
 
   const changeOptionsChosen = (option, checked) => {
     optionsCallback(checked ? {...optionsChosen, [option]: options[option].label} : Object.filter(optionsChosen, option));
@@ -32,10 +32,10 @@ const ProductOptionsCheckboxes = ({optionsCallback, options, optionsChosen}) => 
   );
 };
 
-ProductOptionsCheckboxes.propTypes = {
+ChooseProductParamCheckboxes.propTypes = {
   optionsCallback: PropTypes.func,
   options: PropTypes.object,
   optionsChosen: PropTypes.object,
 };
 
-export default ProductOptionsCheckboxes;
+export default ChooseProductParamCheckboxes;
