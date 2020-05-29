@@ -10,3 +10,8 @@
   background-color: $color-light;
   border: 1px solid;
 }
+
+.loading {
+  position: absolute;
+  transform: translateX(-8 * $base-size);
+}

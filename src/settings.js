@@ -4,6 +4,7 @@ export const api = {
   order: 'order',
   booking: 'booking',
   event: 'event',
+  tables: 'tables',
   dateStartParamKey: 'date_gte',
   dateEndParamKey: 'date_lte',
   notRepeatParam: 'repeat=false',

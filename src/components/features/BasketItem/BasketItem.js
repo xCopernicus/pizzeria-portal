@@ -11,10 +11,7 @@ const BasketItem = ({id, price, amount, deleteProduct, index}) => (
     <p>{price}</p>
     <p>{amount}</p>
     <p>{index}</p>
-    <Button variant='outlined' size='small' color='secondary' onClick={() => {
-      console.log(index);
-      deleteProduct(index);
-    }}>Delete</Button>
+    <Button variant='outlined' size='small' color='secondary' onClick={() => deleteProduct(index)}>Delete</Button>
   </div>
 
 );

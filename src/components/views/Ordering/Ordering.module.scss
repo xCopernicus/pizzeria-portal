@@ -19,3 +19,8 @@
     margin: 0;
   }
 }
+
+.loading {
+  position: absolute;
+  transform: translateX(-8 * $base-size);
+}

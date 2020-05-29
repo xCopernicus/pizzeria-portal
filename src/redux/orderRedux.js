@@ -3,6 +3,7 @@ import {api} from '../settings';
 
 /* selectors */
 export const getAllOrders = ({orders}) => orders.data;
+export const getLocalOrders = ({orders}) => orders.data.filter(order => order.type === 'local');
 export const getOrdersLoadingState = ({orders}) => orders.loading;
 
 /* action name creator */
