@@ -1,5 +1,18 @@
 @import '../../../styles/settings.module.scss';
 
 .component {
-  border: 1px solid;
+  padding: $base-size;
+  border-bottom: 1px solid;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  p {
+    text-align: center;
+    width: 70px;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }

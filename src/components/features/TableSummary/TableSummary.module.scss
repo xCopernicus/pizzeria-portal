@@ -1,0 +1,45 @@
+@import '../../../styles/settings.module.scss';
+
+.component {
+  width: 30 * $base-size;
+  background: $color-light;
+  border-radius: $radius;
+  padding: $base-size;
+}
+
+.header {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: $base-size;
+
+  h3 {
+    margin: 0;
+    flex: 3;
+    text-align: center;
+  }
+
+  .button {
+    flex: 1;
+  }
+}
+
+.orders {
+  border-radius: $radius;
+  border: 1px solid $color-dark;
+}
+
+.info {
+  display: flex;
+  padding: $base-size;
+
+  p {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+
+    &:last-of-type {
+      flex: 3;
+    }
+  }
+}

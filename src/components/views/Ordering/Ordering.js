@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import {Button, Container} from '@material-ui/core';
-import OrderSummary from '../../features/OrderingOrderSummary/OrderingOrderSummary';
+import {Container} from '@material-ui/core';
+
+import TableSummary from '../../features/TableSummary/TableSummary';
 import styles from './Ordering.module.scss';
 
 const Ordering = ({loading: {active, error}, fetchOrders, orders}) => {
@@ -20,7 +20,7 @@ const Ordering = ({loading: {active, error}, fetchOrders, orders}) => {
 
   const tables = ['1', '2', '3'];
 
-  if(error) {
+  if(error || active) {
     return (
       <Container maxWidth='sm'>
         <h2>Ordering</h2>
@@ -30,19 +30,11 @@ const Ordering = ({loading: {active, error}, fetchOrders, orders}) => {
     );
   } else {
     return(
-      <Container maxWidth='sm'>
-        {active ? <p className={styles.loading}>Loading...</p> : ''}
+      <Container maxWidth='lg'>
+        {/* add loading indicator */}
         <div className={styles.component}>
           {tables.map(table => (
-            <div key={table}>
-              <div className={styles.table}>
-                <h3>Table {table}</h3>
-                <div className={styles.buttons}>
-                  <Link to={`${process.env.PUBLIC_URL}/ordering/new/${table}`} ><Button variant='outlined' size='small' color='secondary'>New Order</Button></Link>
-                </div>
-              </div>
-              <OrderSummary fetchOrders={fetchOrders} orders={orders.filter(order => order.tableNo === table)} />
-            </div>
+            <TableSummary key={table} table={table} fetchOrders={fetchOrders} orders={orders.filter(order => order.tableNo === table)} />
           ))}
         </div>
       </Container>

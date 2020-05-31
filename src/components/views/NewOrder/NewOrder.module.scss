@@ -1,8 +1,12 @@
 @import '../../../styles/settings.module.scss';
 
-.products, .basket {
-  padding: $base-size;
-  background-color: $color-light;
-  border: 1px solid;
-  margin: $base-size 0;
+.products {
+  background: $color-light;
+  border-radius: $radius;
+  display: flex;
+  flex-wrap: wrap;
+
+  p {
+    //margin: 0;
+  }
 }

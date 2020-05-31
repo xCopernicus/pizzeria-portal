@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {Container} from '@material-ui/core';
 
-import KitchenOrderSummary from '../../features/KitchenOrderSummary/KitchenOrderSummary';
+import DisplayProduct from '../../features/DisplayProduct/DisplayProduct';
 
 import styles from './Order.module.scss';
 
@@ -18,28 +18,37 @@ const Order = ({loading: {active, error}, fetchOrders, order}) => {
 
   if (error) {
     return(
-      <div className={styles.component}>
-        <Container maxWidth='md'>
+      <Container maxWidth='md'>
+        <div className={styles.component}>
           Error!
-        </Container>
-      </div>
+        </div>
+      </Container>
     );
   } else if (!order || active) {
     return(
-      <div className={styles.component}>
-        <Container maxWidth='md'>
+      <Container maxWidth='md'>
+        <div className={styles.component}>
           Loading...
-        </Container>
-      </div>
+        </div>
+      </Container>
     );
   } else {
+    let productKey = 0;
     return(
-      <div className={styles.component}>
-        <Container maxWidth='md'>
-
-          <KitchenOrderSummary {...order} />
-        </Container>
-      </div>
+      <Container maxWidth='md'>
+        <div className={styles.component}>
+          <p>Status: {order.status}</p>
+          <p>Type: {order.type}</p>
+          <p>Price: {order.price}</p>
+          <p>Products:</p>
+          {order.products.map(product => {
+            productKey++;
+            return(
+              <DisplayProduct key={productKey} {...product} />
+            );
+          })}
+        </div>
+      </Container>
     );
   }
 

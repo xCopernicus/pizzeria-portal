@@ -1,26 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ChooseProductParamSelect = ({optionsCallback, options}) => {
+import {Select, MenuItem} from '@material-ui/core';
 
-  const changeOptionsChosen = (option) => {
+const ChooseProductParamSelect = ({optionsCallback, options, optionsChosen}) => {
+
+  const changeOptionsChosen = option => {
     optionsCallback({[option]: options[option].label});
   };
 
   return(
-    <select onChange={event => changeOptionsChosen(event.currentTarget.value)}>
+    <Select
+      value={Object.keys(optionsChosen)[0]}
+      onChange={e => changeOptionsChosen(e.target.value)}
+      inputProps={{ 'aria-label': 'Without label' }}
+    >
       {Object.keys(options).map(option => (
-        <option key={option} value={option}>
-          {options[option].label}, {options[option].price}
-        </option>
+        <MenuItem
+          key={option}
+          value={option}
+          color='secondary'
+        >
+          {options[option].label}, ${options[option].price}
+        </MenuItem>
       ))}
-    </select>
+    </Select>
   );
 };
 
 ChooseProductParamSelect.propTypes = {
   optionsCallback: PropTypes.func,
   options: PropTypes.object,
+  optionsChosen: PropTypes.object,
 };
 
 export default ChooseProductParamSelect;

@@ -9,44 +9,42 @@ import {api} from '../../../settings';
 
 import styles from './OrderingOrderSummary.module.scss';
 
-const OrderingOrderSummary = ({fetchOrders, orders}) => (
-  <div className={styles.component}>
-    <h4>Orders</h4>
-    <div className={styles.orders}>
-      {orders.map(order => {
+const OrderingOrderSummary = ({fetchOrders, id, status, totalPrice, ...other}) => {
+  const changeStatus = (newStatus) => {
+    Axios
+      .put(`${api.url}/${api.order}/${id}`, {
+        ...other,
+        status: newStatus,
+        id: id,
+        totalPrice: totalPrice,
+      })
+      .then(() => {
+        fetchOrders();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-        const changeStatus = (newStatus) => {
-          Axios
-            .put(`${api.url}/${api.order}/${order.id}`, {
-              ...order,
-              status: newStatus,
-            })
-            .then(() => {
-              fetchOrders();
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        };
-
-        return(
-          <div key={order.id} className={styles.order}>
-            <p>{order.status}</p>
-            <p>{order.totalPrice}</p>
-            {order.status === 'ordered' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('canceled')}>cancel</Button> : ''}
-            {order.status === 'ready' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('delivered')}>delivered</Button> : ''}
-            {order.status === 'delivered' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('paid')}>paid</Button> : ''}
-            <Link to={`${process.env.PUBLIC_URL}/ordering/order/${order.id}`}><Button variant='outlined' size='small' color='secondary'>more info</Button></Link>
-          </div>
-        );
-      })}
+  return(
+    <div className={styles.component}>
+      <p>{status}</p>
+      <p>${totalPrice}</p>
+      <div className={styles.buttons}>
+        {status === 'ordered' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('canceled')}>cancel</Button> : ''}
+        {status === 'ready' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('delivered')}>delivered</Button> : ''}
+        {status === 'delivered' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('paid')}>paid</Button> : ''}
+        <Link to={`${process.env.PUBLIC_URL}/ordering/order/${id}`}><Button variant='outlined' size='small' color='primary'>info</Button></Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 OrderingOrderSummary.propTypes = {
-  orders: PropTypes.array,
   fetchOrders: PropTypes.func,
+  id: PropTypes.number,
+  status: PropTypes.string,
+  totalPrice: PropTypes.number,
 };
 
 export default OrderingOrderSummary;

@@ -1,22 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {Radio, RadioGroup, FormControlLabel} from '@material-ui/core';
+
 const ChooseProductParamRadios = ({optionsCallback, label, options, optionsChosen}) => {
 
+  const changeOptionsChosen = option => {
+    optionsCallback({[option]: options[option].label});
+  };
+
   return(
-    <div>
+    <RadioGroup
+      name={label}
+      value={Object.keys(optionsChosen)[0]}
+      onChange={(e) => changeOptionsChosen(e.target.value)}
+    >
       {Object.keys(options).map(option => (
-        <label key={option}>
-          <input
-            type='radio'
-            checked={Object.keys(optionsChosen).includes(option)}
-            name={label}
-            onChange={() => optionsCallback({[option]: options[option].label})}
-          />
-          {options[option].label}, {options[option].price}
-        </label>
+        <FormControlLabel
+          key={option}
+          color='primary'
+          value={option}
+          control={<Radio color='secondary' />}
+          label={`${options[option].label}, $${options[option].price}`}
+        />
       ))}
-    </div>
+    </RadioGroup>
   );
 };
 

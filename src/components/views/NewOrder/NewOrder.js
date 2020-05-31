@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
 
-import {Container, Button} from '@material-ui/core';
+import {Container} from '@material-ui/core';
 
 import ChooseProduct from '../../features/ChooseProduct/ChooseProduct';
-import BasketItem from '../../features/BasketItem/BasketItem';
+import Basket from '../../features/Basket/Basket';
 
 import {api} from '../../../settings.js';
 
@@ -42,6 +42,7 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts, basket,
         })
         .then(() => {
           clearBasket();
+          window.location.href = `${process.env.PUBLIC_URL}/ordering`;
         })
         .catch(err => {
           console.log(err);
@@ -67,21 +68,10 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts, basket,
       </Container>
     );
   } else {
-    let itemKey = 0;
     return (
       <Container maxWidth='md' className={styles.component}>
         <h2>New Order for Table {match.params.id}</h2>
-        <div className={styles.basket}>
-          <h3>Basket</h3>
-          {basket.map(item => {
-            itemKey++;
-            return(
-              <BasketItem key={itemKey} index={itemKey - 1} {...item} deleteProduct={deleteProduct} />
-            );
-          })}
-          <p>Total Price: {state.price}</p>
-          <Button variant='outlined' size='small' color='secondary' onClick={sendOrder}>Order</Button>
-        </div>
+        <Basket basket={basket} totalPrice={state.price} sendOrder={sendOrder} deleteProduct={deleteProduct} />
         <div className={styles.products}>
           {products.map(product => (
             <ChooseProduct key={product.id} {...product} addProduct={addProduct}/>

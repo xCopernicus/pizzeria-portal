@@ -1,5 +1,38 @@
 @import '../../../styles/settings.module.scss';
 
 .component {
-  border-bottom: 1px solid;
+  padding: $base-size;
+  border: 1px solid;
+  flex: 1 0 50%;
+
+  h3 {
+    margin: 0;
+    padding: $base-size 0;
+    display: inline-block;
+    margin-right: $base-size;
+  }
+
+  input[type=number] {
+    width: 4 * $base-size;
+    height: 2 * $base-size;
+  }
+}
+
+.header {
+  cursor: pointer;
+
+}
+
+.params {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {Checkbox, FormControlLabel} from '@material-ui/core';
+
 Object.filter = (obj, keyToDelete) => {
   let result = {};
   const keys = Object.keys(obj).filter(key => key !== keyToDelete);
@@ -17,18 +19,21 @@ const ChooseProductParamCheckboxes = ({optionsCallback, options, optionsChosen})
   };
 
   return(
-    <div>
+    <>
       {Object.keys(options).map(option => (
-        <label key={option}>
-          <input
-            type='checkbox'
-            checked={Object.keys(optionsChosen).includes(option)}
-            onChange={event => changeOptionsChosen(option, event.currentTarget.checked)}
-          />
-          {options[option].label}, {options[option].price}
-        </label>
+        <FormControlLabel
+          key={option}
+          control={
+            <Checkbox
+              checked={Object.keys(optionsChosen).includes(option)}
+              onChange={event => changeOptionsChosen(option, event.currentTarget.checked)}
+              color='secondary'
+            />
+          }
+          label={`${options[option].label}, $${options[option].price}`}
+        />
       ))}
-    </div>
+    </>
   );
 };
 

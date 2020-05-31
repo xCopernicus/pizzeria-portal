@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import {Button} from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import ChooseProductParam from '../ChooseProductParam/ChooseProductParam';
 
 import styles from './ChooseProduct.module.scss';
@@ -36,7 +38,8 @@ const ChooseProduct = ({name, id, price, params, addProduct}) => {
     });
   });
 
-  const [state, setState] = useState({amount: 1, currentPrice: calculateCurrentPrice(paramsChosen), paramsChosen: paramsChosen});
+  //change 'active' to ''
+  const [state, setState] = useState({params: 'active', amount: 1, currentPrice: calculateCurrentPrice(paramsChosen), paramsChosen: paramsChosen});
 
   const handleAddProduct = () => {
     addProduct({
@@ -48,31 +51,43 @@ const ChooseProduct = ({name, id, price, params, addProduct}) => {
     });
   };
 
+  const toggleOpen = () => {
+    setState({...state, params: state.params ? '' : 'active'});
+    console.log(state.params);
+  };
+
   return(
     <div className={styles.component}>
-      <h3>{name}, {price}</h3>
-      {paramKeys.map(param => {
-        const optionsCallback = (data) => {
-          let newParamsChosen = {
-            ...state.paramsChosen,
-            [param]: {
-              label: params[param].label,
-              options: data,
-            },
+      <div className={styles.header} onClick={toggleOpen}>
+        <h3>{name}, {price}</h3>
+        <FontAwesomeIcon icon={faSortDown} />
+      </div>
+      <div className={`${styles.params} ${state.params ? styles.active : ''}`}>
+        {paramKeys.map(param => {
+          const optionsCallback = (data) => {
+            let newParamsChosen = {
+              ...state.paramsChosen,
+              [param]: {
+                label: params[param].label,
+                options: data,
+              },
+            };
+            setState({
+              ...state,
+              paramsChosen: newParamsChosen,
+              currentPrice: calculateCurrentPrice(newParamsChosen),
+            });
           };
-          setState({
-            ...state,
-            paramsChosen: newParamsChosen,
-            currentPrice: calculateCurrentPrice(newParamsChosen),
-          });
-        };
-        return(
-          <ChooseProductParam key={`${params[param].label} options`} {...params[param]} optionsChosen={state.paramsChosen[param].options} optionsCallback={optionsCallback} />
-        );
-      })}
-      <input type='number' value={state.amount} onChange={e => setState({...state, amount: parseInt(e.target.value)})} />
-      <p>Price: {state.currentPrice * state.amount}</p>
-      <Button variant='outlined' size='small' color='secondary' onClick={() => handleAddProduct()}>Add</Button>
+          return(
+            <ChooseProductParam key={`${params[param].label} options`} {...params[param]} optionsChosen={state.paramsChosen[param].options} optionsCallback={optionsCallback} />
+          );
+        })}
+      </div>
+      <div className={styles.summary}>
+        <input type='number' value={state.amount} onChange={e => setState({...state, amount: parseInt(e.target.value)})} />
+        <p>Price: ${state.currentPrice * state.amount}</p>
+        <Button variant='outlined' size='small' color='secondary' onClick={() => handleAddProduct()}>Add</Button>
+      </div>
     </div>
   );
 };

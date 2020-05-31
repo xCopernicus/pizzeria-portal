@@ -2,25 +2,6 @@
 
 .component {
   display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  background-color: $color-light;
-  border: 1px solid;
-}
-
-.table {
-  display: flex;
-  border-bottom: 1px solid;
-  padding: $base-size (3 * $base-size);
-  justify-content: space-between;
-
-  h3 {
-    margin: 0;
-  }
-}
-
-.loading {
-  position: absolute;
-  transform: translateX(-8 * $base-size);
+  flex-flow: row wrap;
+  justify-content: space-around;
 }

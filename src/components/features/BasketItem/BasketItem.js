@@ -8,9 +8,8 @@ import styles from './BasketItem.module.scss';
 const BasketItem = ({id, price, amount, deleteProduct, index}) => (
   <div className={styles.component}>
     <p>{id}</p>
-    <p>{price}</p>
+    <p>${price}</p>
     <p>{amount}</p>
-    <p>{index}</p>
     <Button variant='outlined' size='small' color='secondary' onClick={() => deleteProduct(index)}>Delete</Button>
   </div>
 

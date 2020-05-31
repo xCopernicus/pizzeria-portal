@@ -1,28 +1,26 @@
 @import '../../../styles/settings.module.scss';
 
 .component {
-  font-size: (1.5 * $base-size);
-  display: flex;
-  justify-content: center;
-  align-content: center;
   margin-bottom: 4 * $base-size;
+  background: $color-dark;
+  height: 4 * $base-size;
 
   a {
-    color: $color-dark;
-    margin: (0.5 * $base-size) 0;
-    margin-right: ($base-size * 3);
-    padding: ($base-size / 2);
-    transition: 0.1s;
-    background-color: $color-primary;
-    border: 4px solid $color-primary;
-    &:last-of-type {
-      margin-right: 0;
+    display: inline-block;
+    font-size: (1.5 * $base-size);
+    line-height: 4 * $base-size;
+    background: $color-dark;
+    color: $color-light;
+    padding: 0 $base-size;
+
+    &:first-child {
+      margin-left: $base-size;
     }
-    &:hover {
-      border: 4px solid $color-success;
-    }
+
     &:global(.active) {
-      border: 4px solid $color-success;
+      background: $color-background;
+      color: $color-dark;
     }
+
   }
 }
