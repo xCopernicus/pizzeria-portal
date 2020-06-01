@@ -4,6 +4,8 @@ import ChooseProductParamCheckboxes from './ChooseProductParamCheckboxes';
 import ChooseProductParamRadios from './ChooseProductParamRadios';
 import ChooseProductParamSelect from './ChooseProductParamSelect';
 
+import styles from './ChooseProductParam.module.scss';
+
 const paramType = {
   checkboxes: ChooseProductParamCheckboxes,
   radios: ChooseProductParamRadios,
@@ -18,7 +20,7 @@ const ChooseProductParam = ({label, type, options, optionsCallback, optionsChose
     return null;
   } else {
     return(
-      <div>
+      <div className={styles.component}>
         <h4>{label}</h4>
         <ParamComponent label={label} options={options} optionsChosen={optionsChosen} optionsCallback={optionsCallback} />
       </div>

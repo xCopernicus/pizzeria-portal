@@ -1,14 +1,29 @@
 @import '../../../styles/settings.module.scss';
 
-.component {
-  padding: $base-size;
-  background-color: $color-light;
-  border: 1px solid;
+.title {
+  margin: 2 * $base-size;
 }
 
-.orders {
+.component {
+  padding: 2 * $base-size;
   background-color: $color-light;
-  border: 1px solid;
+  border-radius: $radius;
+
+  h3 {
+    margin: $base-size;
+  }
+}
+
+.info {
+  padding: $base-size;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  p {
+    margin: 0;
+    width: 7 * $base-size;
+    text-align: center;
+  }
 }
 
 .loading {

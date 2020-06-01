@@ -5,7 +5,7 @@ import {Container} from '@material-ui/core';
 import TableSummary from '../../features/TableSummary/TableSummary';
 import styles from './Ordering.module.scss';
 
-const Ordering = ({loading: {active, error}, fetchOrders, orders}) => {
+const Ordering = ({loading: {error}, fetchOrders, orders}) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,7 +20,7 @@ const Ordering = ({loading: {active, error}, fetchOrders, orders}) => {
 
   const tables = ['1', '2', '3'];
 
-  if(error || active) {
+  if(error) {
     return (
       <Container maxWidth='sm'>
         <h2>Ordering</h2>

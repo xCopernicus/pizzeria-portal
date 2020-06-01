@@ -2,7 +2,28 @@
 
 .component {
   background-color: $color-light;
+  //padding: $base-size;
   border: 1px solid;
+  border-radius: $radius;
+  margin: 2 * $base-size 0;
+  p {
+    margin: 0;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: $base-size;
+  border-bottom: 1px solid;
+  p {
+    width: 7 * $base-size;
+    text-align: center;
+  }
+  button {
+    width: 7 * $base-size;
+  }
 }
 
 .product {

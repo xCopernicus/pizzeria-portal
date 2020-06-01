@@ -12,9 +12,10 @@ const DisplayProduct = ({id, amount, params}) => {
 
   return(
     <div className={styles.component}>
-      <p>Name: {id}</p>
-      <p>Amout: {amount}</p>
-      <p>Params: </p>
+      <div className={styles.header}>
+        <h4>{id}</h4>
+        <p>Amout: {amount}</p>
+      </div>
       {paramKeys.map(param => (
         <DisplayProductParam key={params[param].label} {...params[param]} />
       ))}

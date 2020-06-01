@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {Radio, RadioGroup, FormControlLabel} from '@material-ui/core';
 
+import styles from './ChooseProductParam.module.scss';
+
 const ChooseProductParamRadios = ({optionsCallback, label, options, optionsChosen}) => {
 
   const changeOptionsChosen = option => {
@@ -14,6 +16,7 @@ const ChooseProductParamRadios = ({optionsCallback, label, options, optionsChose
       name={label}
       value={Object.keys(optionsChosen)[0]}
       onChange={(e) => changeOptionsChosen(e.target.value)}
+      className={styles.radio}
     >
       {Object.keys(options).map(option => (
         <FormControlLabel

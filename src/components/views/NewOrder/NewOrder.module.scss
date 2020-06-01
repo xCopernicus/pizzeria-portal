@@ -1,12 +1,15 @@
 @import '../../../styles/settings.module.scss';
 
+.component {
+  h2 {
+    margin: 2 * $base-size;
+  }
+}
+
 .products {
   background: $color-light;
   border-radius: $radius;
   display: flex;
   flex-wrap: wrap;
-
-  p {
-    //margin: 0;
-  }
+  margin-bottom: 2 * $base-size;
 }

@@ -29,9 +29,11 @@ const KitchenOrderSummary = ({id, status, products, fetchOrders, ...other}) => {
   let productKey = 0;
   return(
     <div className={styles.component}>
-      <Button variant='outlined' size='small' color='primary' onClick={handleClick}>Ready</Button>
-      <p>Status: {status}</p>
-      <p>Products:</p>
+      <div className={styles.header}>
+        <p>{id}</p>
+        <p>{status}</p>
+        <Button variant='outlined' size='small' color='primary' onClick={handleClick}>Ready</Button>
+      </div>
       {products.map(product => {
         productKey++;
         return(

@@ -6,11 +6,13 @@ import styles from './DisplayProductParam.module.scss';
 const DisplayProductParam = ({label, options}) => (
   <div className={styles.component}>
     <p>{label}:</p>
-    {Object.keys(options).map(option => (
-      <div className={styles.option} key={option}>
-        {options[option]}
-      </div>
-    ))}
+    <ul>
+      {Object.keys(options).map(option => (
+        <li className={styles.option} key={option}>
+          {options[option]}
+        </li>
+      ))}
+    </ul>
   </div>
 );
 

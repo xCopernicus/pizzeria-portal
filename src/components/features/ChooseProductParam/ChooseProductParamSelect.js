@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {Select, MenuItem} from '@material-ui/core';
 
+import styles from './ChooseProductParam.module.scss';
+
 const ChooseProductParamSelect = ({optionsCallback, options, optionsChosen}) => {
 
   const changeOptionsChosen = option => {
@@ -14,12 +16,13 @@ const ChooseProductParamSelect = ({optionsCallback, options, optionsChosen}) => 
       value={Object.keys(optionsChosen)[0]}
       onChange={e => changeOptionsChosen(e.target.value)}
       inputProps={{ 'aria-label': 'Without label' }}
+      className={styles.select}
+      color='secondary'
     >
       {Object.keys(options).map(option => (
         <MenuItem
           key={option}
           value={option}
-          color='secondary'
         >
           {options[option].label}, ${options[option].price}
         </MenuItem>

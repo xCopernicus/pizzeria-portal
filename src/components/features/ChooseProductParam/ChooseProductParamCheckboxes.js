@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {Checkbox, FormControlLabel} from '@material-ui/core';
 
+import styles from './ChooseProductParam.module.scss';
+
 Object.filter = (obj, keyToDelete) => {
   let result = {};
   const keys = Object.keys(obj).filter(key => key !== keyToDelete);
@@ -19,7 +21,7 @@ const ChooseProductParamCheckboxes = ({optionsCallback, options, optionsChosen})
   };
 
   return(
-    <>
+    <div className={styles.checkboxes}>
       {Object.keys(options).map(option => (
         <FormControlLabel
           key={option}
@@ -33,7 +35,7 @@ const ChooseProductParamCheckboxes = ({optionsCallback, options, optionsChosen})
           label={`${options[option].label}, $${options[option].price}`}
         />
       ))}
-    </>
+    </div>
   );
 };
 

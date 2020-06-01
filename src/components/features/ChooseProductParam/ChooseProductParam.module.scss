@@ -1,0 +1,26 @@
+@import '../../../styles/settings.module.scss';
+
+.component {
+  margin: $base-size 0;
+  border: 1px solid;
+  border-radius: $radius;
+  padding: $base-size;
+
+  h4 {
+    margin: 0 0 $base-size 0;
+  }
+
+  label {
+    display: inline-block;
+  }
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  label {
+    width: 15 * $base-size;
+  }
+}

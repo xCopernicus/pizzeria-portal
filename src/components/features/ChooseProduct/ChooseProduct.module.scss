@@ -1,9 +1,9 @@
 @import '../../../styles/settings.module.scss';
 
 .component {
-  padding: $base-size;
-  border: 1px solid;
+  padding: 2 * $base-size;
   flex: 1 0 50%;
+  padding-top: 0;
 
   h3 {
     margin: 0;
@@ -14,24 +14,40 @@
 
   input[type=number] {
     width: 4 * $base-size;
-    height: 2 * $base-size;
+    height: 1.5 * $base-size;
+  }
+
+  &.active {
+    .icon {
+      transform: scale(-1);
+    }
+    .params {
+      opacity: 1;
+      max-height: 1000px;
+    }
   }
 }
 
 .header {
   cursor: pointer;
-
+  padding: 2 * $base-size 0;
+  &.default {
+    cursor: default;
+  }
+  .icon {
+    transition: $transition;
+  }
 }
 
 .params {
-  display: none;
-}
-
-.active {
-  display: block;
+  opacity: 0;
+  max-height: 0;
+  transition: $transition;
+  overflow: hidden;
 }
 
 .summary {
+  margin-top: 2 * $base-size;
   display: flex;
   align-items: center;
   justify-content: space-around;

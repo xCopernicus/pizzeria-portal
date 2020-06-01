@@ -1,6 +1,18 @@
 @import '../../../styles/settings.module.scss';
 
 .component {
-  margin: $base-size;
-  border: 1px solid;
+  border-bottom: 1px solid;
+  &:last-of-type {
+    border-bottom: none;
+  }
+  h4 {
+    margin: $base-size 0;
+  }
+
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

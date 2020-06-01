@@ -35,19 +35,29 @@ const Kitchen = ({loading: {active, error}, fetchOrders, orders}) => {
     );
   } else {
     return(
-      <Container maxWidth='md'>
+      <Container maxWidth='lg'>
         {active ? <p className={styles.loading}>Loading...</p> : ''}
+        <h2 className={styles.title}>Kitchen view</h2>
         <div className={styles.component}>
-          <h2>Kitchen view</h2>
           <Row between='xs'>
             <Col xs={5} className={styles.orders}>
               <h3>Local</h3>
+              <div className={styles.info}>
+                <p>ID number</p>
+                <p>Status</p>
+                <p>Action</p>
+              </div>
               {orders.map(order => (
                 order.type === 'local' && order.status === 'ordered' ? <OrderSummary key={order.id} fetchOrders={fetchOrders} {...order} /> : ''
               ))}
             </Col>
             <Col xs={5} className={styles.orders}>
               <h3>Delivery</h3>
+              <div className={styles.info}>
+                <p>ID number</p>
+                <p>Status</p>
+                <p>Action</p>
+              </div>
               {orders.map(order => (
                 order.type === 'delivery' && order.status === 'ordered' ? <OrderSummary key={order.id} fetchOrders={fetchOrders} {...order} /> : ''
               ))}
