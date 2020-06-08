@@ -5,7 +5,7 @@ import {Container} from '@material-ui/core';
 import TableSummary from '../../features/TableSummary/TableSummary';
 import styles from './Ordering.module.scss';
 
-const Ordering = ({loading: {error}, fetchOrders, orders}) => {
+const Ordering = ({loading: {active, error}, fetchOrders, orders}) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,7 +31,8 @@ const Ordering = ({loading: {error}, fetchOrders, orders}) => {
   } else {
     return(
       <Container maxWidth='lg'>
-        {/* add loading indicator */}
+        <h2 className={styles.title}>Ordering view</h2>
+        {active ? <p className={styles.loading}>Loading...</p> : ''}
         <div className={styles.component}>
           {tables.map(table => (
             <TableSummary key={table} table={table} fetchOrders={fetchOrders} orders={orders.filter(order => order.tableNo === table)} />

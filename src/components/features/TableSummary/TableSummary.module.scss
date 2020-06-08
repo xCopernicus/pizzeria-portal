@@ -15,12 +15,16 @@
 
   h3 {
     margin: 0;
-    flex: 3;
+    flex: 1;
     text-align: center;
   }
 
-  .button {
+  .buttons {
     flex: 1;
+    display: flex;
+    a {
+      margin-left: $base-size; 
+    }
   }
 }
 

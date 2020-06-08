@@ -34,6 +34,7 @@ const OrderingOrderSummary = ({fetchOrders, id, status, totalPrice, ...other}) =
         {status === 'ordered' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('canceled')}>cancel</Button> : ''}
         {status === 'ready' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('delivered')}>delivered</Button> : ''}
         {status === 'delivered' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('paid')}>paid</Button> : ''}
+        {status === 'paid' ? <Button variant='outlined' size='small' color='secondary' onClick={() => changeStatus('done')}>done</Button> : ''}
         <Link to={`${process.env.PUBLIC_URL}/ordering/order/${id}`}><Button variant='outlined' size='small' color='primary'>info</Button></Link>
       </div>
     </div>

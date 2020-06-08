@@ -42,7 +42,7 @@ const NewOrder = ({ loading: { active, error }, products, fetchProducts, basket,
         })
         .then(() => {
           clearBasket();
-          window.location.href = `${process.env.PUBLIC_URL}/ordering`;
+          document.querySelector('a.active').click();
         })
         .catch(err => {
           console.log(err);

@@ -1,5 +1,53 @@
 @import '../../../styles/settings.module.scss';
 
+.title {
+  margin: 2 * $base-size;
+  display: inline-block;
+}
+
+.loading {
+  display: inline-block;
+}
+
 .component {
   background-color: $color-light;
+  border-radius: $radius;
+  padding: $base-size;
+}
+
+.col {
+  padding: 0;
+}
+
+.info {
+  padding: 0;
+  border: 1px solid;
+  border-radius: $radius;
+  p {
+    margin: 0;
+    padding: $base-size;
+    border-bottom: 1px solid;
+    &:last-of-type {
+      border: none;
+    }
+  }
+}
+
+.products {
+  border: 1px solid;
+  border-radius: $radius;
+}
+
+.buttons {
+  margin-top: $base-size;
+  padding: $base-size 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  button {
+    margin-left: $base-size;
+  }
+  p {
+    margin: 0;
+  }
 }

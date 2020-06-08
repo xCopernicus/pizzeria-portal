@@ -1,5 +1,14 @@
 @import '../../../styles/settings.module.scss';
 
+.title {
+  margin: 2 * $base-size;
+  display: inline-block;
+}
+
+.loading {
+  display: inline-block;
+}
+
 .component {
   display: flex;
   flex-flow: row wrap;

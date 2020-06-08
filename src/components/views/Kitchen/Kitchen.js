@@ -24,20 +24,19 @@ const Kitchen = ({loading: {active, error}, fetchOrders, orders}) => {
     window.scrollTo(0, 0);
   }, []);
 
-
   if(error) {
     return (
       <Container maxWidth='md' className={styles.component}>
         <h2>Kitchen</h2>
-        <p>Error! Details:</p>
+        <p>Error!</p>
         <pre>{error}</pre>
       </Container>
     );
   } else {
     return(
       <Container maxWidth='lg'>
-        {active ? <p className={styles.loading}>Loading...</p> : ''}
         <h2 className={styles.title}>Kitchen view</h2>
+        {active ? <p className={styles.loading}>Loading...</p> : ''}
         <div className={styles.component}>
           <Row between='xs'>
             <Col xs={5} className={styles.orders}>
